@@ -19,7 +19,8 @@ async function addTraveler(req, res) {
     try {
         const collection = await db.collection("travelers")
         await collection.insertOne(req.body)
-        res.send('travelers')
+        const travelers = await collection.find({}).toArray()
+        res.send(travelers)
     } catch(e) {
         console.log(e.message)
         res.json({ error: e.message })
@@ -33,7 +34,7 @@ async function updateTraveler(req, res) {
         const collection = await db.collection("travelers")
         const result = await collection.replaceOne({ _id: new ObjectId(req.params.id) }, req.body)
         console.log(result)
-        res.send(travelers)
+        res.send(result)
     } catch(e) {
         console.log(e.message)
         res.json({ error: e.message })
@@ -45,7 +46,7 @@ async function deleteTraveler(req, res) {
         const collection = await db.collection("travelers")
         const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) })
         console.log(result)
-        res.send(travelers)
+        res.send(result)
     } catch(e) {
         console.log(e.message)
         res.json({ error: e.message })
@@ -58,7 +59,7 @@ async function resetTravelersData(req, res) {
         const resultDelete = await collection.deleteMany({})
         const resultInsert = await collection.insertMany(travelersData)
         console.log({ ...resultDelete, ...resultInsert })
-        res.send(travelers)
+        res.send({ ...resultDelete, ...resultInsert })
     } catch(e) {
         console.log(e.message)
         res.json({ error: e.message })

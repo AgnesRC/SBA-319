@@ -19,7 +19,8 @@ async function addFlight(req, res) {
     try {
         const collection = await db.collection("flights")
         await collection.insertOne(req.body)
-        res.send('flights')
+        const flights = await collection.find({}).toArray()
+        res.send(flights)
     } catch(e) {
         console.log(e.message)
         res.json({ error: e.message })
@@ -33,7 +34,7 @@ async function updateFlight(req, res) {
         const collection = await db.collection("flights")
         const result = await collection.replaceOne({ _id: new ObjectId(req.params.id) }, req.body)
         console.log(result)
-        res.send(flights)
+        res.send(result)
     } catch(e) {
         console.log(e.message)
         res.json({ error: e.message })
@@ -45,7 +46,7 @@ async function deleteFlight(req, res) {
         const collection = await db.collection("flights")
         const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) })
         console.log(result)
-        res.send(flights)
+        res.send(result)
     } catch(e) {
         console.log(e.message)
         res.json({ error: e.message })
@@ -58,7 +59,7 @@ async function resetFlightData(req, res) {
         const resultDelete = await collection.deleteMany({})
         const resultInsert = await collection.insertMany(flightData)
         console.log({ ...resultDelete, ...resultInsert })
-        res.send(flights)
+        res.send({ ...resultDelete, ...resultInsert })
     } catch(e) {
         console.log(e.message)
         res.json({ error: e.message })

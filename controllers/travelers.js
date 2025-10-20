@@ -5,15 +5,24 @@ import travelersData from '../data/Travelers.js'
 
 async function displayTravelers(req, res) {
     try {
-        const collection = await db.collection("travelers")
-        await collection.insertMany(travelersData)
-        const travelers = await collection.find({}).toArray()
-        res.send(travelers)
-    } catch(e) {
-        console.log(e.message)
-        res.json({ error: e.message })
+        const collection = await db.collection("travelers");
+        const existingCount = await collection.countDocuments();
+  
+        if (existingCount === 0) {
+        await collection.insertMany(travelersData);
+        console.log("Inserted travelers data into collection");
+      } else {
+        console.log("Travelers data already exists");
+      }
+  
+      const travelers = await collection.find({}).toArray();
+      res.send(travelers);
+    } catch (e) {
+      console.error(e.message);
+      res.json({ error: e.message });
     }
-}
+  }
+  
 
 async function addTraveler(req, res) {
     try {

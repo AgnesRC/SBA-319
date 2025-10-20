@@ -6,7 +6,15 @@ import flightData from '../data/flights.js'
 async function displayFlights(req, res) {
     try {
         const collection = await db.collection("flights")
-        await collection.insertMany(flightData)
+        const existingCount = await collection.countDocuments();
+  
+        if (existingCount === 0) {
+        await collection.insertMany(travelersData);
+        console.log("Inserted travelers data into collection");
+      } else {
+        console.log("Travelers data already exists");
+      }
+
         const flights = await collection.find({}).toArray()
         res.send(flights)
     } catch(e) {

@@ -65,7 +65,6 @@ async function resetAirportData(req, res) {
     }
 }
 
-// renaming the functions in the export
 export default {
     index: displayAirports,
     create: addAirport,

@@ -14,18 +14,18 @@ POST: /flights/test-invalid-flight => tests flight entry validation
 GET: flights/seed => resets flight data 
 
 Airport 
-GET: /airports => displays all airports 
-DELETE: /airports/:id => deletes an airport by id given 
-PUT: /airports/:id' => replaces an airport by id given 
-POST: /airports/create => creates a new airport 
-GET: airports/seed => resets airport data 
+GET: /airports => displays all airports  
+DELETE: /airports/:id => deletes an airport by id given  
+PUT: /airports/:id' => replaces an airport by id given  
+POST: /airports/create => creates a new airport  
+GET: airports/seed => resets airport data  
 
-Travelers 
-GET: /travelers => displays all travelers 
-DELETE: /travelers/:id => deletes a traveler by id given 
-PUT: /travelers/:id' => replaces a traveler by id given 
-POST: /travelers/create => creates a new traveler 
-GET: /travelers/seed => resets travelers data 
+Travelers  
+GET: /travelers => displays all travelers  
+DELETE: /travelers/:id => deletes a traveler by id given  
+PUT: /travelers/:id' => replaces a traveler by id given  
+POST: /travelers/create => creates a new traveler  
+GET: /travelers/seed => resets travelers data  
 
 
 

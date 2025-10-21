@@ -74,10 +74,30 @@ async function resetFlightData(req, res) {
     }
 }
 
+// Validation Tester
+async function testInvalidFlight(req, res) {
+    try {
+      const collection = db.collection("flights");
+      const invalidFlight = {
+        airline: 'American',            
+        origin: 'New York',         
+        destination: 'Miami'
+      };
+      await collection.insertOne(invalidFlight);
+  
+      res.status(200).send("Unexpected: invalid flight inserted successfully!");
+    } catch (e) {
+      console.error("Validation error:", e.message);
+      res.status(400).json({ error: "Validation failed as expected", details: e.message });
+    }
+  };
+  
+
 export default {
     index: displayFlights,
     create: addFlight,
     update: updateFlight,
     delete: deleteFlight,
     seed: resetFlightData,
+    test: testInvalidFlight,
 }

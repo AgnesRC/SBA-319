@@ -9,5 +9,6 @@ router.delete('/:id', flightController.delete)
 router.put('/:id', flightController.update)
 router.post('/create', flightController.create)
 router.get('/seed', flightController.seed)
+router.post('/test-invalid-flight', flightController.test) 
 
 export default router

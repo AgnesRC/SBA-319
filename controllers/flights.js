@@ -9,7 +9,7 @@ async function displayFlights(req, res) {
         const existingCount = await collection.countDocuments();
   
         if (existingCount === 0) {
-        await collection.insertMany(travelersData);
+        await collection.insertMany(flightData);
         console.log("Inserted travelers data into collection");
       } else {
         console.log("Travelers data already exists");
@@ -91,6 +91,20 @@ async function testInvalidFlight(req, res) {
       res.json({ error: "Validation failed as expected", details: e.message });
     }
   };
+
+  //Index Creation
+   async function createIndexes() {  
+    try {
+        const flights = db.collection("flights");
+
+        await flights.createIndex({ origin: 1 });
+        await flights.createIndex({ destination: 1 });
+
+        console.log("Indexes created successfully.");
+    } catch (err) {
+        console.error("Error creating indexes:", err);
+    }
+    }
   
 
 export default {
@@ -100,4 +114,5 @@ export default {
     delete: deleteFlight,
     seed: resetFlightData,
     test: testInvalidFlight,
+    createIndex: createIndexes,
 }

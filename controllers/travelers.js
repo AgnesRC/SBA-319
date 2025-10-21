@@ -7,7 +7,7 @@ async function displayTravelers(req, res) {
     try {
         const collection = await db.collection("travelers");
         const existingCount = await collection.countDocuments();
-  
+
         if (existingCount === 0) {
         await collection.insertMany(travelersData);
         console.log("Inserted travelers data into collection");

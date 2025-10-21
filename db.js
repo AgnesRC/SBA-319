@@ -16,4 +16,3 @@ let connection;
 const db = connection.db("sba_travel")
 
 export default db
-

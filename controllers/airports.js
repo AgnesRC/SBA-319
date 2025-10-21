@@ -7,9 +7,9 @@ async function displayAirports(req, res) {
     try {
         const collection = await db.collection("airports")
         const existingCount = await collection.countDocuments();
-  
+
         if (existingCount === 0) {
-        await collection.insertMany(travelersData);
+        await collection.insertMany(airportData);
         console.log("Inserted travelers data into collection");
       } else {
         console.log("Travelers data already exists");
@@ -39,7 +39,7 @@ async function updateAirport(req, res) {
     try {
         console.log('PUT')
         console.log(req.body)
-        const collection = await db.collection("Airports")
+        const collection = await db.collection("airports")
         const result = await collection.replaceOne({ _id: new ObjectId(req.params.id) }, req.body)
         console.log(result)
         res.send(result)

@@ -84,11 +84,11 @@ async function testInvalidFlight(req, res) {
         destination: 'Miami'
       };
       await collection.insertOne(invalidFlight);
-  
-      res.status(200).send("Unexpected: invalid flight inserted successfully!");
+      res.send("Unexpected: invalid flight inserted successfully!");
+      
     } catch (e) {
       console.error("Validation error:", e.message);
-      res.status(400).json({ error: "Validation failed as expected", details: e.message });
+      res.json({ error: "Validation failed as expected", details: e.message });
     }
   };
   

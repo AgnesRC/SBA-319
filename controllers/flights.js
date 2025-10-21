@@ -99,8 +99,6 @@ async function testInvalidFlight(req, res) {
 
         await flights.createIndex({ origin: 1 });
         await flights.createIndex({ destination: 1 });
-
-        console.log("Indexes created successfully.");
     } catch (err) {
         console.error("Error creating indexes:", err);
     }

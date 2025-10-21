@@ -10,4 +10,6 @@ router.put('/:id', airportController.update)
 router.post('/create', airportController.create)
 router.get('/seed', airportController.seed)
 
+airportController.createIndex();
+
 export default router

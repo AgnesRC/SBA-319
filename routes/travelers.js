@@ -10,4 +10,6 @@ router.put('/:id', travelerController.update)
 router.post('/create', travelerController.create)
 router.get('/seed', travelerController.seed)
 
+travelerController.createIndex()
+
 export default router

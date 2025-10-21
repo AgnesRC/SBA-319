@@ -74,10 +74,25 @@ async function resetAirportData(req, res) {
     }
 }
 
+//Index Creation
+async function createIndexes() {  
+    try {
+        const airports = db.collection("airports");
+
+        await airports.createIndex({ code: 1 });
+        await airports.createIndex({ city: 1 });
+    } catch (err) {
+        console.error("Error creating indexes:", err);
+    }
+    }
+
+
+
 export default {
     index: displayAirports,
     create: addAirport,
     update: updateAirport,
     delete: deleteAirport,
     seed: resetAirportData,
+    createIndex: createIndexes,
 }

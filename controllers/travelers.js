@@ -75,10 +75,23 @@ async function resetTravelersData(req, res) {
     }
 }
 
+//Index Creation
+async function createIndexes() {  
+    try {
+        const travelers = db.collection("travelers");
+
+        await travelers.createIndex({ name: 1 });
+        await travelers.createIndex({ destination: 1 });
+    } catch (err) {
+        console.error("Error creating indexes:", err);
+    }
+    }
+
 export default {
     index: displayTravelers,
     create: addTraveler,
     update: updateTraveler,
     delete: deleteTraveler,
     seed: resetTravelersData,
+    createIndex: createIndexes,
 }

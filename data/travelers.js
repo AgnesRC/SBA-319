@@ -9,7 +9,7 @@ const travelers = [
         name:'Pennie Sylvania',
         email: 'sylvania@sample.com',
         destination: 'LGA',
-        flight_status: 'standby'
+        flight_status: 'cancelled'
     },
     {
         name:'Boston Chussets',

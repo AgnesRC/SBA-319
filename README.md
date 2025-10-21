@@ -6,11 +6,11 @@ In this project, I used Node.js and MongoDB to create a databse that manages Fli
 
 Routes:  
 Flights:  
-GET: /flights => displays all flights 
-DELETE: /flights/:id => deletes a flight by id given 
-PUT: /flights/:id' => replaces a flight by id given 
-POST: /flights/create => creates a new flight 
-POST: /flights/test-invalid-flight => tests flight entry validation 
+GET: /flights => displays all flights  
+DELETE: /flights/:id => deletes a flight by id given  
+PUT: /flights/:id' => replaces a flight by id given  
+POST: /flights/create => creates a new flight  
+POST: /flights/test-invalid-flight => tests flight entry validation  
 GET: flights/seed => resets flight data 
 
 Airport 

@@ -13,7 +13,7 @@ POST: /flights/create => creates a new flight
 POST: /flights/test-invalid-flight => tests flight entry validation  
 GET: flights/seed => resets flight data 
 
-Airport 
+Airport   
 GET: /airports => displays all airports  
 DELETE: /airports/:id => deletes an airport by id given  
 PUT: /airports/:id' => replaces an airport by id given  
